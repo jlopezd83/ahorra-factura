@@ -18,14 +18,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Ocultar después de 3 segundos por si algo falla
     }
 
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    function validarFormulario() {
+        const nombre = form.querySelector('[name="nombre"]').value.trim();
+        const telefono = form.querySelector('[name="telefono"]').value.trim();
+        
+        if (nombre.length < 3) {
+            alert('Por favor, introduce un nombre válido');
+            return false;
+        }
+        
+        if (!/^\d{9}$/.test(telefono)) {
+            alert('Por favor, introduce un teléfono válido (9 dígitos)');
+            return false;
+        }
         
         if (!validarServicios()) {
             alert('Por favor, selecciona al menos un servicio para optimizar');
-            return;
+            return false;
         }
+        
+        return true;
+    }
 
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (!validarFormulario()) return;
+        
         const formData = new FormData(form);
         const nombre = formData.get('nombre');
         const telefono = formData.get('telefono');
