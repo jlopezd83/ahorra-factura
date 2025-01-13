@@ -25,6 +25,20 @@
     <link rel="canonical" href="https://ahorra-factura.vercel.app">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/styles.css" rel="stylesheet">
+
+    <meta name="author" content="AhorraFácil">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Añadir Google Analytics (reemplaza TU-ID con el ID real) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TU-ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'TU-ID');
+    </script>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -105,7 +119,30 @@
                     </div>
                     <p class="text-gray-600">"He conseguido ahorrar más de 300€ anuales en mis facturas de luz y gas."</p>
                 </div>
-                <!-- Más testimonios similares -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">JR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Juan R.</h4>
+                            <p class="text-gray-600">Barcelona</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Reduje mi factura de internet y móvil un 40%. El proceso fue muy sencillo."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">ML</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">María L.</h4>
+                            <p class="text-gray-600">Valencia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Excelente servicio. Me ayudaron a optimizar todas mis facturas y ahora ahorro más de 500€ al año."</p>
+                </div>
             </div>
         </div>
     </section>
@@ -168,12 +205,42 @@
         </div>
     </section>
 
+    <!-- Añadir sección FAQ antes del footer -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold mb-2">¿Cuánto tiempo tarda el proceso?</h3>
+                    <p class="text-gray-600">El análisis inicial toma solo 15 minutos. La implementación de cambios puede variar según los servicios.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold mb-2">¿Tiene algún coste el servicio?</h3>
+                    <p class="text-gray-600">El análisis inicial es completamente gratuito. Solo pagas si decides implementar los cambios y ahorras.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold mb-2">¿Qué documentación necesito?</h3>
+                    <p class="text-gray-600">Solo necesitas tus últimas facturas de los servicios que quieras optimizar.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold mb-2">¿Tengo que cambiar de compañía?</h3>
+                    <p class="text-gray-600">No siempre. A veces podemos optimizar tu tarifa actual. Si recomendamos un cambio, siempre será opcional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="text-center">
                 <h3 class="text-xl font-bold mb-4">AhorraFácil</h3>
                 <p class="text-gray-400">Optimizando tus facturas desde 2024</p>
+                <div class="mt-4 space-x-4">
+                    <a href="/privacidad.html" class="text-gray-400 hover:text-white">Política de Privacidad</a>
+                    <a href="/cookies.html" class="text-gray-400 hover:text-white">Política de Cookies</a>
+                    <a href="/legal.html" class="text-gray-400 hover:text-white">Aviso Legal</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -73,4 +73,58 @@ html {
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; } 
+.delay-300 { animation-delay: 300ms; }
+
+/* Mejoras responsive adicionales */
+@media (max-width: 640px) {
+    .grid-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .statistics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Animaciones mejoradas */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mejoras de accesibilidad */
+:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* Hover effects */
+.card-hover {
+    transition: transform 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+} 

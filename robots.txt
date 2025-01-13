@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /privacidad.html
+Disallow: /cookies.html
+Disallow: /legal.html
+
 Sitemap: https://ahorra-factura.vercel.app/sitemap.xml 
