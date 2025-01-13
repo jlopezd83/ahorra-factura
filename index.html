@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Metatags -->
+    <title>Ahorra en tus Facturas | Optimiza tus gastos en luz, gas e internet</title>
+    <meta name="description" content="Reduce tus facturas mensuales de luz, gas, internet y móvil. Ahorra hasta un 30% en tus servicios sin complicaciones. Asesoramiento gratuito personalizado.">
+    <meta name="keywords" content="ahorro facturas, reducir factura luz, reducir factura gas, ahorro internet, optimización facturas, asesoramiento energético">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/">
+    <meta property="og:title" content="Ahorra en tus Facturas | Optimización de Gastos">
+    <meta property="og:description" content="Reduce tus facturas mensuales hasta un 30%. Asesoramiento personalizado gratuito.">
+    <meta property="og:image" content="https://tudominio.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/">
+    <meta property="twitter:title" content="Ahorra en tus Facturas | Optimización de Gastos">
+    <meta property="twitter:description" content="Reduce tus facturas mensuales hasta un 30%. Asesoramiento personalizado gratuito.">
+    <meta property="twitter:image" content="https://tudominio.com/images/twitter-image.jpg">
+
+    <link rel="canonical" href="https://tudominio.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <a href="#" class="text-2xl font-bold text-blue-600">AhorraFácil</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-r from-blue-500 to-blue-700">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Reduce tus Facturas Mensuales sin Complicaciones
+                </h1>
+                <p class="text-xl mb-8">
+                    Únete a miles de personas que ya están ahorrando en sus facturas de luz, gas, internet y móvil.
+                </p>
+                <a href="#contacto" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                    Empieza a Ahorrar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section id="como-funciona" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">¿Cómo Funciona?</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Contacta</h3>
+                    <p class="text-gray-600">Rellena el formulario e inicia el chat</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">2</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Comparte Info</h3>
+                    <p class="text-gray-600">Te pediremos información por WhatsApp</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">3</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Recibe Propuesta</h3>
+                    <p class="text-gray-600">Analizamos y te enviamos la mejor opción</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">4</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Ahorra</h3>
+                    <p class="text-gray-600">Implementamos los cambios y ahorras</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Añadir antes del formulario el mensaje de carga -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-xl text-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-lg">Abriendo WhatsApp...</p>
+        </div>
+    </div>
+
+    <!-- Formulario de Contacto -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-md mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Contacta con Nosotros</h2>
+                <form id="contactForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Nombre completo *</label>
+                        <input type="text" name="nombre" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Teléfono *</label>
+                        <input type="tel" name="telefono" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Servicios que quieres optimizar *</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="servicios[]" value="luz" class="mr-2">
+                                Electricidad
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="servicios[]" value="gas" class="mr-2">
+                                Gas
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="servicios[]" value="internet" class="mr-2">
+                                Internet/Fibra
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="servicios[]" value="movil" class="mr-2">
+                                Móvil
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="servicios[]" value="alarma" class="mr-2">
+                                Alarma
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition duration-300 flex items-center justify-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                        </svg>
+                        Iniciar Chat en WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-4">AhorraFácil</h3>
+                <p class="text-gray-400">Optimizando tus facturas desde 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
