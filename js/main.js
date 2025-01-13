@@ -22,23 +22,77 @@ document.addEventListener('DOMContentLoaded', function() {
         const nombre = form.querySelector('[name="nombre"]').value.trim();
         const telefono = form.querySelector('[name="telefono"]').value.trim();
         
+        // Validar nombre
+        if (!nombre) {
+            mostrarError('Por favor, introduce tu nombre');
+            form.querySelector('[name="nombre"]').focus();
+            return false;
+        }
+        
         if (nombre.length < 3) {
-            alert('Por favor, introduce un nombre válido');
+            mostrarError('El nombre debe tener al menos 3 caracteres');
+            form.querySelector('[name="nombre"]').focus();
+            return false;
+        }
+        
+        // Validar teléfono
+        if (!telefono) {
+            mostrarError('Por favor, introduce tu número de teléfono');
+            form.querySelector('[name="telefono"]').focus();
             return false;
         }
         
         if (!/^\d{9}$/.test(telefono)) {
-            alert('Por favor, introduce un teléfono válido (9 dígitos)');
+            mostrarError('El teléfono debe tener 9 dígitos');
+            form.querySelector('[name="telefono"]').focus();
             return false;
         }
         
+        // Validar servicios
         if (!validarServicios()) {
-            alert('Por favor, selecciona al menos un servicio para optimizar');
+            mostrarError('Por favor, selecciona al menos un servicio para optimizar');
             return false;
         }
         
         return true;
     }
+
+    function mostrarError(mensaje) {
+        // Crear o actualizar el div de error
+        let errorDiv = document.getElementById('errorMensaje');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.id = 'errorMensaje';
+            errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4';
+            form.insertBefore(errorDiv, form.firstChild);
+        }
+        errorDiv.textContent = mensaje;
+        
+        // Ocultar el mensaje después de 3 segundos
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 3000);
+    }
+
+    // Limpiar mensaje de error cuando el usuario empiece a escribir
+    form.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+            const errorDiv = document.getElementById('errorMensaje');
+            if (errorDiv) {
+                errorDiv.remove();
+            }
+        });
+    });
+
+    // Limpiar mensaje de error cuando se seleccione un checkbox
+    form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const errorDiv = document.getElementById('errorMensaje');
+            if (errorDiv && validarServicios()) {
+                errorDiv.remove();
+            }
+        });
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
