@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ahorra-factura.vercel.app/</loc>
+    <loc>https://ahorra-factura.com/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ahorra-factura.vercel.app/privacidad.html</loc>
+    <loc>https://ahorra-factura.com/privacidad.html</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ahorra-factura.vercel.app/cookies.html</loc>
+    <loc>https://ahorra-factura.com/cookies.html</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -4,4 +4,4 @@ Disallow: /privacidad.html
 Disallow: /cookies.html
 Disallow: /legal.html
 
-Sitemap: https://ahorra-factura.vercel.app/sitemap.xml 
+Sitemap: https://ahorra-factura.com/sitemap.xml 
