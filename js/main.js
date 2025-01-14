@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Testimonios dinámicos
     async function cargarTestimonios() {
         try {
-            const response = await fetch('/data/testimonios.json');
+            const response = await fetch('data/testimonios.json');
             const data = await response.json();
             const testimoniosContainer = document.querySelector('.testimonios-container');
             let currentIndex = 0;
@@ -213,8 +213,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Iniciar cuando el DOM esté listo
-    document.addEventListener('DOMContentLoaded', function() {
-        cargarTestimonios();
-    });
+    // Cargar testimonios inmediatamente
+    cargarTestimonios();
 }); 
