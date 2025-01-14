@@ -1,0 +1,39 @@
+{
+  "testimonios": [
+    {
+      "nombre": "Ana M.",
+      "ciudad": "Madrid",
+      "texto": "He conseguido ahorrar más de 300€ anuales en mis facturas de luz y gas.",
+      "iniciales": "AM",
+      "servicio": "luz y gas"
+    },
+    {
+      "nombre": "Juan R.",
+      "ciudad": "Barcelona",
+      "texto": "Reduje mi factura de internet y móvil un 40%. El proceso fue muy sencillo.",
+      "iniciales": "JR",
+      "servicio": "internet y móvil"
+    },
+    {
+      "nombre": "María L.",
+      "ciudad": "Valencia",
+      "texto": "Excelente servicio. Me ayudaron a optimizar todas mis facturas y ahora ahorro más de 500€ al año.",
+      "iniciales": "ML",
+      "servicio": "todos los servicios"
+    },
+    {
+      "nombre": "Pedro S.",
+      "ciudad": "Sevilla",
+      "texto": "La mejor decisión que he tomado. Ahorro 200€ al año solo en la factura de la luz.",
+      "iniciales": "PS",
+      "servicio": "luz"
+    },
+    {
+      "nombre": "Laura G.",
+      "ciudad": "Bilbao",
+      "texto": "Profesionales y eficientes. Me ayudaron a encontrar la mejor tarifa de gas.",
+      "iniciales": "LG",
+      "servicio": "gas"
+    }
+  ]
+} 
