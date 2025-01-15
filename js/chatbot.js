@@ -65,12 +65,10 @@ class Chatbot {
 
     async sendResponses() {
         try {
-            const response = await fetch('https://webhook.site/13024e13-4476-4e42-8eaa-d32feeff7214', {
+            const response = await fetch('https://formspree.io/f/xdkkjgqr', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     nombre: this.responses.nombre,
@@ -81,10 +79,9 @@ class Chatbot {
                     fecha: new Date().toISOString()
                 })
             });
-            
             return true;
         } catch (error) {
-            console.error('Error al enviar datos:', error);
+            console.error('Error:', error);
             return false;
         }
     }
