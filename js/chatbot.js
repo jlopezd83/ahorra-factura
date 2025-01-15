@@ -123,12 +123,14 @@ class Chatbot {
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
 
-        // Mostrar pregunta
-        chatMessages.insertAdjacentHTML('beforeend', `
-            <div class="mb-4">
-                <div class="bg-blue-100 p-3 rounded-lg inline-block">${step.question}</div>
-            </div>
-        `);
+        // Solo mostrar la pregunta si no hay mensajes previos
+        if (!chatMessages.hasChildNodes()) {
+            chatMessages.insertAdjacentHTML('beforeend', `
+                <div class="mb-4">
+                    <div class="bg-blue-100 p-3 rounded-lg inline-block">${step.question}</div>
+                </div>
+            `);
+        }
 
         // Crear input según el tipo
         let inputHtml = '';
@@ -158,17 +160,19 @@ class Chatbot {
             </div>
         `;
 
-        // Añadir indicador de progreso
-        const progress = Math.round((this.currentStep / this.steps.length) * 100);
-        const progressHtml = `
-            <div class="text-xs text-gray-500 mb-2 text-center">
-                Progreso: ${progress}%
-                <div class="h-1 w-full bg-gray-200 rounded-full mt-1">
-                    <div class="h-1 bg-blue-600 rounded-full" style="width: ${progress}%"></div>
+        // Solo mostrar el progreso si no existe ya
+        if (!document.querySelector('.progress-indicator')) {
+            const progress = Math.round((this.currentStep / this.steps.length) * 100);
+            const progressHtml = `
+                <div class="progress-indicator text-xs text-gray-500 mb-2 text-center">
+                    Progreso: ${progress}%
+                    <div class="h-1 w-full bg-gray-200 rounded-full mt-1">
+                        <div class="h-1 bg-blue-600 rounded-full" style="width: ${progress}%"></div>
+                    </div>
                 </div>
-            </div>
-        `;
-        chatInput.insertAdjacentHTML('beforebegin', progressHtml);
+            `;
+            chatInput.insertAdjacentHTML('beforebegin', progressHtml);
+        }
 
         // Añadir event listener al botón
         const button = chatInput.querySelector('button');
@@ -285,9 +289,15 @@ class Chatbot {
         this.createChatInterface();
         
         // Event Listeners
+        document.getElementById('openChat').addEventListener('click', () => {
+            document.getElementById('chatbot').classList.remove('translate-y-full');
+            if (this.currentStep === 0 && !document.getElementById('chatMessages').hasChildNodes()) {
+                this.showNextQuestion();
+            }
+        });
+
         document.getElementById('chatButton').addEventListener('click', () => {
             document.getElementById('chatbot').classList.remove('translate-y-full');
-            // Solo mostrar la primera pregunta si no hay mensajes previos
             const chatMessages = document.getElementById('chatMessages');
             if (this.currentStep === 0 && !chatMessages.hasChildNodes()) {
                 this.showNextQuestion();
