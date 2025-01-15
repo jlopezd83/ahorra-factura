@@ -101,20 +101,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function mostrarError(mensaje) {
-        // Crear o actualizar el div de error
-        let errorDiv = document.getElementById('errorMensaje');
-        if (!errorDiv) {
-            errorDiv = document.createElement('div');
-            errorDiv.id = 'errorMensaje';
-            errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4';
-            form.insertBefore(errorDiv, form.firstChild);
-        }
-        errorDiv.textContent = mensaje;
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4';
+        errorDiv.innerHTML = mensaje;
         
-        // Ocultar el mensaje después de 3 segundos
-        setTimeout(() => {
-            errorDiv.remove();
-        }, 3000);
+        const form = document.getElementById('contactForm');
+        const existingError = form.querySelector('.bg-red-100');
+        if (existingError) {
+            existingError.remove();
+        }
+        form.appendChild(errorDiv);
     }
 
     // Limpiar mensaje de error cuando el usuario empiece a escribir
@@ -276,5 +272,32 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         document.body.appendChild(consent);
+    }
+
+    function iniciarWhatsApp() {
+        const form = document.getElementById('contactForm');
+        const nombre = form.querySelector('#nombre').value.trim();
+        const telefono = form.querySelector('#telefono').value.trim();
+        const servicios = Array.from(form.querySelectorAll('input[name="servicios[]"]:checked')).map(cb => cb.value);
+        
+        // Validar campos
+        if (!nombre || !telefono || servicios.length === 0) {
+            mostrarError('Por favor, rellena todos los campos y selecciona al menos un servicio');
+            return;
+        }
+        
+        // Validar formato de teléfono
+        const telefonoLimpio = telefono.replace(/[\s-]/g, '');
+        if (!/^[6789]\d{8}$/.test(telefonoLimpio)) {
+            mostrarError('Por favor, introduce un número de teléfono válido');
+            return;
+        }
+        
+        // Crear mensaje para WhatsApp
+        const mensaje = `Hola, soy ${nombre}. Me interesan los siguientes servicios: ${servicios.join(', ')}`;
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        
+        // Abrir WhatsApp
+        window.open(`https://wa.me/34666666666?text=${mensajeCodificado}`);
     }
 }); 
