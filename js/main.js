@@ -1,3 +1,46 @@
+// Testimonios dinámicos
+async function cargarTestimonios() {
+    try {
+        const response = await fetch('data/testimonios.json');
+        const data = await response.json();
+        const testimoniosContainer = document.querySelector('.testimonios-container');
+        let currentIndex = 0;
+
+        function mostrarTestimonios() {
+            const testimonio = data.testimonios[currentIndex];
+            
+            testimoniosContainer.innerHTML = `
+                <div class="bg-white p-4 rounded-lg shadow-md opacity-0 transform translate-y-4 transition-all duration-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">${testimonio.iniciales}</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm">${testimonio.nombre}</h4>
+                            <p class="text-gray-600 text-sm">${testimonio.ciudad}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">"${testimonio.texto}"</p>
+                </div>
+            `;
+
+            // Animar entrada
+            setTimeout(() => {
+                document.querySelectorAll('.testimonios-container > div').forEach(el => {
+                    el.classList.remove('opacity-0', 'translate-y-4');
+                });
+            }, 100);
+
+            currentIndex = (currentIndex + 1) % data.testimonios.length;
+        }
+
+        mostrarTestimonios();
+        setInterval(mostrarTestimonios, 5000);
+    } catch (error) {
+        console.error('Error cargando testimonios:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const loadingOverlay = document.getElementById('loadingOverlay');
@@ -170,95 +213,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Testimonios dinámicos
-    async function cargarTestimonios() {
-        try {
-            const response = await fetch('data/testimonios.json');
-            const data = await response.json();
-            const testimoniosContainer = document.querySelector('.testimonios-container');
-            let currentIndex = 0;
-
-            function mostrarTestimonios() {
-                const testimonio = data.testimonios[currentIndex];
-                
-                testimoniosContainer.innerHTML = `
-                    <div class="bg-white p-4 rounded-lg shadow-md opacity-0 transform translate-y-4 transition-all duration-500">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
-                                <span class="text-blue-600 font-bold">${testimonio.iniciales}</span>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm">${testimonio.nombre}</h4>
-                                <p class="text-gray-600 text-sm">${testimonio.ciudad}</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"${testimonio.texto}"</p>
-                    </div>
-                `;
-
-                // Animar entrada
-                setTimeout(() => {
-                    document.querySelectorAll('.testimonios-container > div').forEach(el => {
-                        el.classList.remove('opacity-0', 'translate-y-4');
-                    });
-                }, 100);
-
-                currentIndex = (currentIndex + 1) % data.testimonios.length;
-            }
-
-            mostrarTestimonios();
-            setInterval(mostrarTestimonios, 5000);
-        } catch (error) {
-            console.error('Error cargando testimonios:', error);
-        }
-    }
-
-    // Cargar testimonios inmediatamente
+    // Cargar testimonios
     cargarTestimonios();
 
-    // Funcionalidad del menú móvil
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuButton = document.getElementById('menuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        const openChatMobile = document.getElementById('openChatMobile');
-        const mobileLinks = mobileMenu.querySelectorAll('a');
+    // Menú móvil
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const openChatMobile = document.getElementById('openChatMobile');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
 
-        // Abrir menú
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll
-        });
+    // Abrir menú
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevenir scroll
+    });
 
-        // Cerrar menú
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = ''; // Restaurar scroll
-        });
+    // Cerrar menú
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = ''; // Restaurar scroll
+    });
 
-        // Cerrar al hacer click fuera
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Cerrar al hacer click en links
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Botón de chat en móvil
-        openChatMobile.addEventListener('click', () => {
+    // Cerrar al hacer click fuera
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
             mobileMenu.classList.add('hidden');
             document.body.style.overflow = '';
-            document.getElementById('chatbot').classList.remove('translate-y-full');
-            const chatbot = window.chatbot;
-            if (chatbot && chatbot.currentStep === 0) chatbot.showNextQuestion();
+        }
+    });
+
+    // Cerrar al hacer click en links
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
         });
+    });
+
+    // Botón de chat en móvil
+    openChatMobile.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+        document.getElementById('chatbot').classList.remove('translate-y-full');
+        const chatbot = window.chatbot;
+        if (chatbot && chatbot.currentStep === 0) chatbot.showNextQuestion();
     });
 }); 
