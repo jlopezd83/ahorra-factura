@@ -49,6 +49,20 @@ class Chatbot {
         ];
     }
 
+    validateEmail(email) {
+        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+    }
+    
+    validatePhone(phone) {
+        // Acepta formatos: 666666666, 666-666-666, 666 666 666
+        phone = phone.replace(/[\s-]/g, '');
+        return /^[6789]\d{8}$/.test(phone);
+    }
+    
+    validateName(name) {
+        return name.length >= 2 && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name);
+    }
+
     createChatInterface() {
         const chatHtml = `
             <div id="chatbot" class="fixed bottom-4 right-4 w-96 bg-white rounded-lg shadow-xl transform transition-transform duration-300 translate-y-full">
@@ -135,25 +149,69 @@ class Chatbot {
         const button = chatInput.querySelector('button');
         button.addEventListener('click', () => {
             let value = '';
+            let isValid = true;
+            let errorMessage = '';
             
             switch (step.type) {
                 case 'checkbox':
                     const checked = chatInput.querySelectorAll('input[type="checkbox"]:checked');
                     value = Array.from(checked).map(input => input.value);
+                    if (value.length === 0) {
+                        isValid = false;
+                        errorMessage = '🔍 Por favor, selecciona los servicios que quieres optimizar';
+                    }
                     break;
                 case 'radio':
                     const selected = chatInput.querySelector('input[type="radio"]:checked');
                     value = selected ? selected.value : '';
+                    if (!value) {
+                        isValid = false;
+                        errorMessage = '📞 Por favor, indícanos cómo prefieres que te contactemos';
+                    }
                     break;
                 default:
-                    value = chatInput.querySelector('input').value;
+                    value = chatInput.querySelector('input').value.trim();
+                    if (!value) {
+                        isValid = false;
+                        errorMessage = step.type === 'text' ? '👋 Por favor, dinos tu nombre' :
+                                    step.type === 'email' ? '📧 Necesitamos tu email para contactarte' :
+                                    '📱 Necesitamos tu teléfono para contactarte';
+                    } else if (step.type === 'text' && !this.validateName(value)) {
+                        isValid = false;
+                        errorMessage = '👋 Por favor, introduce un nombre válido (solo letras)';
+                    } else if (step.type === 'email' && !this.validateEmail(value)) {
+                        isValid = false;
+                        errorMessage = '📧 Por favor, introduce un email válido (ejemplo@dominio.com)';
+                    } else if (step.type === 'tel' && !this.validatePhone(value)) {
+                        isValid = false;
+                        errorMessage = '📱 Introduce un teléfono móvil válido español (9 dígitos)';
+                    }
             }
             
-            if (!value || (Array.isArray(value) && value.length === 0)) {
-                alert('Por favor, completa este campo');
+            if (!isValid) {
+                const errorDiv = chatInput.querySelector('.error-message') || document.createElement('div');
+                errorDiv.className = 'error-message bg-red-50 text-red-600 p-2 rounded-lg mt-2 flex items-center';
+                errorDiv.innerHTML = `
+                    <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                    ${errorMessage}
+                `;
+                if (!chatInput.querySelector('.error-message')) {
+                    chatInput.querySelector('.space-y-2').appendChild(errorDiv);
+                }
+                // Añadir clase de error al input
+                const input = chatInput.querySelector('input');
+                if (input) {
+                    input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+                }
                 return;
             }
             
+            // Limpiar error si existe
+            const errorDiv = chatInput.querySelector('.error-message');
+            if (errorDiv) errorDiv.remove();
+
             this.responses[step.field] = value;
             
             // Mostrar la respuesta del usuario

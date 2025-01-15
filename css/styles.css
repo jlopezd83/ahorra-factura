@@ -171,6 +171,7 @@ html {
 #chatbot {
     z-index: 1000;
     max-width: calc(100vw - 2rem);
+    width: 24rem;
 }
 
 #chatMessages::-webkit-scrollbar {
@@ -184,4 +185,33 @@ html {
 #chatMessages::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
+}
+
+@media (max-width: 640px) {
+    #chatbot {
+        width: auto;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-message {
+    animation: shake 0.5s ease-in-out;
+}
+
+.input-error {
+    border-color: #EF4444;
+    transition: all 0.3s ease;
+}
+
+.input-error:focus {
+    border-color: #EF4444;
+    box-shadow: 0 0 0 1px #EF4444;
 } 

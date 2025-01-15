@@ -110,6 +110,12 @@
                     <img src="/images/share/share-square.jpg" alt="Ahorra Factura" class="h-10 w-10 mr-3">
                     <a href="#" class="text-2xl font-bold text-blue-600">Ahorra Factura</a>
                 </div>
+                <!-- Botón menú móvil -->
+                <button id="menuButton" class="md:hidden text-gray-600 hover:text-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
                 <div class="hidden md:flex space-x-8">
                     <a href="#como-funciona" class="text-gray-600 hover:text-blue-600 transition-colors">Cómo Funciona</a>
                     <a href="#contacto" class="text-gray-600 hover:text-blue-600 transition-colors">Contacto</a>
@@ -117,6 +123,23 @@
                     <button id="openChat" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                         Chat
                     </button>
+                </div>
+                <!-- Menú móvil -->
+                <div id="mobileMenu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 z-50">
+                    <div class="bg-white w-64 h-full right-0 absolute p-4">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="font-bold text-lg">Menú</h3>
+                            <button id="closeMenu" class="text-gray-600">×</button>
+                        </div>
+                        <div class="flex flex-col space-y-4">
+                            <a href="#como-funciona" class="text-gray-600 hover:text-blue-600">Cómo Funciona</a>
+                            <a href="#contacto" class="text-gray-600 hover:text-blue-600">Contacto</a>
+                            <a href="#faq" class="text-gray-600 hover:text-blue-600">FAQ</a>
+                            <button id="openChatMobile" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                Chat
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
