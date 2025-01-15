@@ -64,6 +64,17 @@ class Chatbot {
     }
 
     createChatInterface() {
+        // Crear botón flotante
+        const buttonHtml = `
+            <button id="chatButton" aria-label="Abrir chat" class="animate-bounce">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                    </path>
+                </svg>
+            </button>
+        `;
+
         const chatHtml = `
             <div id="chatbot" class="fixed bottom-4 right-4 w-96 bg-white rounded-lg shadow-xl transform transition-transform duration-300 translate-y-full">
                 <div class="p-4 bg-blue-600 text-white rounded-t-lg flex justify-between items-center">
@@ -74,6 +85,8 @@ class Chatbot {
                 <div id="chatInput" class="p-4 border-t"></div>
             </div>
         `;
+
+        document.body.insertAdjacentHTML('beforeend', buttonHtml);
         document.body.insertAdjacentHTML('beforeend', chatHtml);
     }
 
@@ -260,16 +273,16 @@ class Chatbot {
         this.createChatInterface();
         
         // Event Listeners
-        document.getElementById('openChat').addEventListener('click', () => {
+        document.getElementById('chatButton').addEventListener('click', () => {
             document.getElementById('chatbot').classList.remove('translate-y-full');
             if (this.currentStep === 0) this.showNextQuestion();
+            document.getElementById('chatButton').classList.remove('animate-bounce');
         });
 
         document.getElementById('closeChat').addEventListener('click', () => {
             document.getElementById('chatbot').classList.add('translate-y-full');
         });
 
-        // Asegurarnos de que el chatbot es accesible globalmente
         window.chatbot = this;
     }
 } 
