@@ -59,6 +59,7 @@ class Chatbot {
                 <div id="chatMessages" class="p-4 h-96 overflow-y-auto"></div>
                 <div id="chatInput" class="p-4 border-t"></div>
             </div>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         `;
         document.body.insertAdjacentHTML('beforeend', chatHtml);
     }
@@ -74,6 +75,7 @@ class Chatbot {
             
             await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfQD5XhAoqrRbro5n1bAGd4FTsNonUnaZmEYWjq62b1nokOUw/formResponse', {
                 method: 'POST',
+                mode: 'no-cors',
                 body: formData
             });
             return true;
