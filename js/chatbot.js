@@ -59,32 +59,32 @@ class Chatbot {
                 <div id="chatMessages" class="p-4 h-96 overflow-y-auto"></div>
                 <div id="chatInput" class="p-4 border-t"></div>
             </div>
-            <form id="googleForm" target="hidden_iframe" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSfQD5XhAoqrRbro5n1bAGd4FTsNonUnaZmEYWjq62b1nokOUw/formResponse" style="display:none;">
-                <input type="text" name="entry.1076785751" id="form_nombre">
-                <input type="email" name="entry.1341879922" id="form_email">
-                <input type="tel" name="entry.1110174749" id="form_telefono">
-                <input type="text" name="entry.1182224606" id="form_servicios">
-                <input type="text" name="entry.416790264" id="form_contacto">
-            </form>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         `;
         document.body.insertAdjacentHTML('beforeend', chatHtml);
     }
 
     async sendResponses() {
         try {
-            // Rellenar el formulario oculto
-            document.getElementById('form_nombre').value = this.responses.nombre;
-            document.getElementById('form_email').value = this.responses.email;
-            document.getElementById('form_telefono').value = this.responses.telefono;
-            document.getElementById('form_servicios').value = this.responses.servicios.join(', ');
-            document.getElementById('form_contacto').value = this.responses.contacto;
+            const response = await fetch('https://webhook.site/13024e13-4476-4e42-8eaa-d32feeff7214', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    nombre: this.responses.nombre,
+                    email: this.responses.email,
+                    telefono: this.responses.telefono,
+                    servicios: this.responses.servicios,
+                    contacto: this.responses.contacto,
+                    fecha: new Date().toISOString()
+                })
+            });
             
-            // Enviar el formulario
-            document.getElementById('googleForm').submit();
             return true;
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error al enviar datos:', error);
             return false;
         }
     }
