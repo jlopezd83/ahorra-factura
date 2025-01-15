@@ -59,6 +59,13 @@ class Chatbot {
                 <div id="chatMessages" class="p-4 h-96 overflow-y-auto"></div>
                 <div id="chatInput" class="p-4 border-t"></div>
             </div>
+            <form id="googleForm" target="hidden_iframe" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSfQD5XhAoqrRbro5n1bAGd4FTsNonUnaZmEYWjq62b1nokOUw/formResponse" style="display:none;">
+                <input type="text" name="entry.1076785751" id="form_nombre">
+                <input type="email" name="entry.1341879922" id="form_email">
+                <input type="tel" name="entry.1110174749" id="form_telefono">
+                <input type="text" name="entry.1182224606" id="form_servicios">
+                <input type="text" name="entry.416790264" id="form_contacto">
+            </form>
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         `;
         document.body.insertAdjacentHTML('beforeend', chatHtml);
@@ -66,18 +73,15 @@ class Chatbot {
 
     async sendResponses() {
         try {
-            const formData = new FormData();
-            formData.append('entry.1076785751', this.responses.nombre);
-            formData.append('entry.1341879922', this.responses.email);
-            formData.append('entry.1110174749', this.responses.telefono);
-            formData.append('entry.1182224606', this.responses.servicios.join(', '));
-            formData.append('entry.416790264', this.responses.contacto);
+            // Rellenar el formulario oculto
+            document.getElementById('form_nombre').value = this.responses.nombre;
+            document.getElementById('form_email').value = this.responses.email;
+            document.getElementById('form_telefono').value = this.responses.telefono;
+            document.getElementById('form_servicios').value = this.responses.servicios.join(', ');
+            document.getElementById('form_contacto').value = this.responses.contacto;
             
-            await fetch('https://docs.google.com/forms/d/e/1FAIpQLSfQD5XhAoqrRbro5n1bAGd4FTsNonUnaZmEYWjq62b1nokOUw/formResponse', {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData
-            });
+            // Enviar el formulario
+            document.getElementById('googleForm').submit();
             return true;
         } catch (error) {
             console.error('Error:', error);
