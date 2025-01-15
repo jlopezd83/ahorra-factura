@@ -158,6 +158,18 @@ class Chatbot {
             </div>
         `;
 
+        // Añadir indicador de progreso
+        const progress = Math.round((this.currentStep / this.steps.length) * 100);
+        const progressHtml = `
+            <div class="text-xs text-gray-500 mb-2 text-center">
+                Progreso: ${progress}%
+                <div class="h-1 w-full bg-gray-200 rounded-full mt-1">
+                    <div class="h-1 bg-blue-600 rounded-full" style="width: ${progress}%"></div>
+                </div>
+            </div>
+        `;
+        chatInput.insertAdjacentHTML('beforebegin', progressHtml);
+
         // Añadir event listener al botón
         const button = chatInput.querySelector('button');
         button.addEventListener('click', () => {
@@ -275,7 +287,11 @@ class Chatbot {
         // Event Listeners
         document.getElementById('chatButton').addEventListener('click', () => {
             document.getElementById('chatbot').classList.remove('translate-y-full');
-            if (this.currentStep === 0) this.showNextQuestion();
+            // Solo mostrar la primera pregunta si no hay mensajes previos
+            const chatMessages = document.getElementById('chatMessages');
+            if (this.currentStep === 0 && !chatMessages.hasChildNodes()) {
+                this.showNextQuestion();
+            }
             document.getElementById('chatButton').classList.remove('animate-bounce');
         });
 

@@ -264,4 +264,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Chatbot no inicializado');
         }
     });
+
+    function showCookieConsent() {
+        const consent = document.createElement('div');
+        consent.innerHTML = `
+            <div class="fixed bottom-0 w-full bg-gray-900 text-white p-4 z-50">
+                <div class="container mx-auto flex justify-between items-center">
+                    <p>Utilizamos cookies para mejorar tu experiencia.</p>
+                    <button class="bg-blue-600 px-4 py-2 rounded">Aceptar</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(consent);
+    }
 }); 

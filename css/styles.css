@@ -279,4 +279,62 @@ html {
         width: 3rem;
         height: 3rem;
     }
+}
+
+/* Botón volver arriba */
+#backToTop {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 30;
+}
+
+#backToTop.visible {
+    opacity: 1;
+}
+
+/* Tooltip del chat */
+#chatButton::before {
+    content: '¿Necesitas ayuda? ¡Chatea con nosotros!';
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+#chatButton:hover::before {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones al scroll */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 } 
