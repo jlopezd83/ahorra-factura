@@ -33,7 +33,8 @@ class Chatbot {
                     'Gas',
                     'Internet',
                     'Móvil',
-                    'Alarma'
+                    'Alarma',
+                    'Otros'
                 ]
             },
             {
@@ -43,7 +44,8 @@ class Chatbot {
                 options: [
                     'WhatsApp',
                     'Llamada',
-                    'Email'
+                    'Email',
+                    'Otros'
                 ]
             }
         ];
