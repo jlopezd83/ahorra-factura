@@ -105,9 +105,19 @@
     <!-- Header -->
     <header class="bg-white shadow-sm fixed w-full top-0 z-50">
         <nav class="container mx-auto px-4 py-4">
-            <div class="flex items-center">
-                <img src="/images/share/share-square.jpg" alt="Ahorra Factura" class="h-10 w-10 mr-3">
-                <a href="#" class="text-2xl font-bold text-blue-600">Ahorra Factura</a>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="/images/share/share-square.jpg" alt="Ahorra Factura" class="h-10 w-10 mr-3">
+                    <a href="#" class="text-2xl font-bold text-blue-600">Ahorra Factura</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#como-funciona" class="text-gray-600 hover:text-blue-600 transition-colors">Cómo Funciona</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-blue-600 transition-colors">Contacto</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600 transition-colors">FAQ</a>
+                    <button id="openChat" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Chat
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -322,5 +332,10 @@
     </section>
 
     <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        const chatbot = new Chatbot();
+        chatbot.init();
+    </script>
 </body>
 </html> 

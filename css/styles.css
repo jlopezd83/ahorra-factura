@@ -165,4 +165,23 @@ html {
 
 .input-focus-effect:focus-within::after {
     transform: translateX(0);
+}
+
+/* Chatbot styles */
+#chatbot {
+    z-index: 1000;
+    max-width: calc(100vw - 2rem);
+}
+
+#chatMessages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
 } 
