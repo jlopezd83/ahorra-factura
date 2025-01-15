@@ -254,6 +254,9 @@ class Chatbot {
     }
 
     init() {
+        if (window.chatbotInitialized) return;
+        window.chatbotInitialized = true;
+
         this.createChatInterface();
         
         // Event Listeners
@@ -265,5 +268,8 @@ class Chatbot {
         document.getElementById('closeChat').addEventListener('click', () => {
             document.getElementById('chatbot').classList.add('translate-y-full');
         });
+
+        // Asegurarnos de que el chatbot es accesible globalmente
+        window.chatbot = this;
     }
 } 

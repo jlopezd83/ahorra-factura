@@ -256,7 +256,12 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenu.classList.add('hidden');
         document.body.style.overflow = '';
         document.getElementById('chatbot').classList.remove('translate-y-full');
-        const chatbot = window.chatbot;
-        if (chatbot && chatbot.currentStep === 0) chatbot.showNextQuestion();
+        if (window.chatbot) {
+            if (window.chatbot.currentStep === 0) {
+                window.chatbot.showNextQuestion();
+            }
+        } else {
+            console.error('Chatbot no inicializado');
+        }
     });
 }); 
