@@ -214,4 +214,30 @@ html {
 .input-error:focus {
     border-color: #EF4444;
     box-shadow: 0 0 0 1px #EF4444;
+}
+
+/* Animación del menú móvil */
+#mobileMenu .bg-white {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+#mobileMenu:not(.hidden) .bg-white {
+    transform: translateX(0);
+}
+
+/* Overlay del menú */
+#mobileMenu {
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+#mobileMenu.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobileMenu:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
 } 

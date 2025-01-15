@@ -215,4 +215,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cargar testimonios inmediatamente
     cargarTestimonios();
+
+    // Funcionalidad del menú móvil
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const openChatMobile = document.getElementById('openChatMobile');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        // Abrir menú
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        });
+
+        // Cerrar menú
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = ''; // Restaurar scroll
+        });
+
+        // Cerrar al hacer click fuera
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Cerrar al hacer click en links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Botón de chat en móvil
+        openChatMobile.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+            document.getElementById('chatbot').classList.remove('translate-y-full');
+            const chatbot = window.chatbot;
+            if (chatbot && chatbot.currentStep === 0) chatbot.showNextQuestion();
+        });
+    });
 }); 
