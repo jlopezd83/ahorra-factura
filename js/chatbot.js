@@ -160,19 +160,23 @@ class Chatbot {
             </div>
         `;
 
-        // Solo mostrar el progreso si no existe ya
-        if (!document.querySelector('.progress-indicator')) {
-            const progress = Math.round((this.currentStep / this.steps.length) * 100);
-            const progressHtml = `
-                <div class="progress-indicator text-xs text-gray-500 mb-2 text-center">
-                    Progreso: ${progress}%
-                    <div class="h-1 w-full bg-gray-200 rounded-full mt-1">
-                        <div class="h-1 bg-blue-600 rounded-full" style="width: ${progress}%"></div>
-                    </div>
+        // Actualizar o crear el indicador de progreso
+        const progress = Math.round((this.currentStep / this.steps.length) * 100);
+        const progressHtml = `
+            <div class="progress-indicator text-xs text-gray-500 mb-2 text-center">
+                Progreso: ${progress}%
+                <div class="h-1 w-full bg-gray-200 rounded-full mt-1">
+                    <div class="h-1 bg-blue-600 rounded-full" style="width: ${progress}%"></div>
                 </div>
-            `;
-            chatInput.insertAdjacentHTML('beforebegin', progressHtml);
+            </div>
+        `;
+        
+        // Eliminar el indicador de progreso anterior si existe
+        const existingProgress = document.querySelector('.progress-indicator');
+        if (existingProgress) {
+            existingProgress.remove();
         }
+        chatInput.insertAdjacentHTML('beforebegin', progressHtml);
 
         // Añadir event listener al botón
         const button = chatInput.querySelector('button');
