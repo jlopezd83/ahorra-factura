@@ -273,31 +273,44 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.body.appendChild(consent);
     }
+});
 
-    function iniciarWhatsApp() {
-        const form = document.getElementById('contactForm');
-        const nombre = form.querySelector('#nombre').value.trim();
-        const telefono = form.querySelector('#telefono').value.trim();
-        const servicios = Array.from(form.querySelectorAll('input[name="servicios[]"]:checked')).map(cb => cb.value);
-        
-        // Validar campos
-        if (!nombre || !telefono || servicios.length === 0) {
-            mostrarError('Por favor, rellena todos los campos y selecciona al menos un servicio');
-            return;
-        }
-        
-        // Validar formato de teléfono
-        const telefonoLimpio = telefono.replace(/[\s-]/g, '');
-        if (!/^[6789]\d{8}$/.test(telefonoLimpio)) {
-            mostrarError('Por favor, introduce un número de teléfono válido');
-            return;
-        }
-        
-        // Crear mensaje para WhatsApp
-        const mensaje = `Hola, soy ${nombre}. Me interesan los siguientes servicios: ${servicios.join(', ')}`;
-        const mensajeCodificado = encodeURIComponent(mensaje);
-        
-        // Abrir WhatsApp
-        window.open(`https://wa.me/34666666666?text=${mensajeCodificado}`);
+// Función global para WhatsApp
+function iniciarWhatsApp() {
+    const form = document.getElementById('contactForm');
+    const nombre = form.querySelector('#nombre').value.trim();
+    const telefono = form.querySelector('#telefono').value.trim();
+    const servicios = Array.from(form.querySelectorAll('input[name="servicios[]"]:checked')).map(cb => cb.value);
+    
+    // Eliminar error anterior si existe
+    const existingError = form.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
     }
-}); 
+
+    // Validar campos
+    if (!nombre || !telefono || servicios.length === 0) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4';
+        errorDiv.innerHTML = 'Por favor, rellena todos los campos y selecciona al menos un servicio';
+        form.appendChild(errorDiv);
+        return;
+    }
+    
+    // Validar formato de teléfono
+    const telefonoLimpio = telefono.replace(/[\s-]/g, '');
+    if (!/^[6789]\d{8}$/.test(telefonoLimpio)) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4';
+        errorDiv.innerHTML = 'Por favor, introduce un número de teléfono válido español (9 dígitos)';
+        form.appendChild(errorDiv);
+        return;
+    }
+    
+    // Crear mensaje para WhatsApp
+    const mensaje = `Hola, soy ${nombre}. Me interesan los siguientes servicios: ${servicios.join(', ')}`;
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    
+    // Abrir WhatsApp
+    window.open(`https://wa.me/34666666666?text=${mensajeCodificado}`);
+} 
