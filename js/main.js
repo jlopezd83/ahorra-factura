@@ -312,5 +312,5 @@ function iniciarWhatsApp() {
     const mensajeCodificado = encodeURIComponent(mensaje);
     
     // Abrir WhatsApp
-    window.open(`https://wa.me/34666666666?text=${mensajeCodificado}`);
+    window.open(`https://wa.me/34670449218?text=${mensajeCodificado}`);
 } 
