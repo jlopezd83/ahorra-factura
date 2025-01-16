@@ -311,38 +311,19 @@ function iniciarWhatsApp() {
     const mensaje = `Hola, soy ${nombre}. Me interesan los siguientes servicios: ${servicios.join(', ')}`;
     const mensajeCodificado = encodeURIComponent(mensaje);
     
-    // Mostrar mensaje de aviso
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    loadingOverlay.innerHTML = `
-        <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md">
-            <div class="mb-4">
-                <svg class="w-12 h-12 text-green-500 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
-                </svg>
-            </div>
-            <p class="text-gray-600 mb-4">Se abrirá WhatsApp en una nueva pestaña.</p>
-            <p class="text-sm text-gray-500">Si ya tienes WhatsApp Web abierto, puedes usar esa pestaña.</p>
-        </div>
-    `;
-    loadingOverlay.classList.remove('hidden');
-
-    // Ocultar el mensaje después de 2 segundos
-    setTimeout(() => {
-        loadingOverlay.classList.add('hidden');
-    }, 2000);
+    // Detectar si es móvil
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
-    // Intentar abrir WhatsApp Web primero
-    const whatsappWeb = window.open(`https://web.whatsapp.com/send?phone=34670449218&text=${mensajeCodificado}`, '_blank');
-    
-    // Si WhatsApp Web falla o no está disponible, intentar con la versión móvil
-    whatsappWeb.addEventListener('load', (event) => {
-        if (event.target.location.href.includes('web.whatsapp.com/send')) {
-            // WhatsApp Web funcionó
-            return;
-        } else {
-            // Si WhatsApp Web no está disponible, usar la versión móvil
-            whatsappWeb.close();
-            window.open(`https://wa.me/34670449218?text=${mensajeCodificado}`, '_blank');
-        }
-    });
+    if (isMobile) {
+        // En móvil, intentar abrir la app de WhatsApp
+        window.location.href = `whatsapp://send?phone=34670449218&text=${mensajeCodificado}`;
+        
+        // Si falla (WhatsApp no instalado), abrir versión web después de un pequeño delay
+        setTimeout(() => {
+            window.location.href = `https://wa.me/34670449218?text=${mensajeCodificado}`;
+        }, 300);
+    } else {
+        // En desktop, abrir WhatsApp Web
+        window.open(`https://web.whatsapp.com/send?phone=34670449218&text=${mensajeCodificado}`, '_blank');
+    }
 } 
