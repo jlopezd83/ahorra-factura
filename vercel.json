@@ -8,6 +8,10 @@
     {
       "src": "/images/(.*)",
       "dest": "/images/$1"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/admin/$1"
     }
   ],
   "public": true
