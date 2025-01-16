@@ -277,18 +277,24 @@ class Chatbot {
         // Event Listeners
         document.getElementById('openChat').addEventListener('click', () => {
             document.getElementById('chatbot').classList.remove('translate-y-full');
-            if (this.currentStep === 0 && !document.getElementById('chatMessages').hasChildNodes()) {
+            const chatMessages = document.getElementById('chatMessages');
+            if (this.currentStep === 0 && !chatMessages.hasChildNodes()) {
                 this.showNextQuestion();
             }
         });
 
         document.getElementById('chatButton').addEventListener('click', () => {
             document.getElementById('chatbot').classList.remove('translate-y-full');
+            document.getElementById('chatButton').classList.remove('animate-bounce');
+        });
+
+        // Botón de chat en móvil
+        document.getElementById('openChatMobile').addEventListener('click', () => {
+            document.getElementById('chatbot').classList.remove('translate-y-full');
             const chatMessages = document.getElementById('chatMessages');
             if (this.currentStep === 0 && !chatMessages.hasChildNodes()) {
                 this.showNextQuestion();
             }
-            document.getElementById('chatButton').classList.remove('animate-bounce');
         });
 
         document.getElementById('closeChat').addEventListener('click', () => {
