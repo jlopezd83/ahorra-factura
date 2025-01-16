@@ -311,6 +311,18 @@ function iniciarWhatsApp() {
     const mensaje = `Hola, soy ${nombre}. Me interesan los siguientes servicios: ${servicios.join(', ')}`;
     const mensajeCodificado = encodeURIComponent(mensaje);
     
-    // Abrir WhatsApp
-    window.open(`https://wa.me/34670449218?text=${mensajeCodificado}`);
+    // Intentar abrir WhatsApp Web primero
+    const whatsappWeb = window.open(`https://web.whatsapp.com/send?phone=34670449218&text=${mensajeCodificado}`, '_blank');
+    
+    // Si WhatsApp Web falla o no está disponible, intentar con la versión móvil
+    whatsappWeb.addEventListener('load', (event) => {
+        if (event.target.location.href.includes('web.whatsapp.com/send')) {
+            // WhatsApp Web funcionó
+            return;
+        } else {
+            // Si WhatsApp Web no está disponible, usar la versión móvil
+            whatsappWeb.close();
+            window.open(`https://wa.me/34670449218?text=${mensajeCodificado}`, '_blank');
+        }
+    });
 } 
