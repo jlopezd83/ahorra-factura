@@ -1,5 +1,17 @@
 {
   "version": 2,
+  "redirects": [
+    {
+      "source": "https://ahorra-factura.com/:path*",
+      "destination": "https://www.ahorrafactura.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://ahorra-factura.vercel.app/:path*",
+      "destination": "https://www.ahorrafactura.com/:path*",
+      "permanent": true
+    }
+  ],
   "routes": [
     {
       "src": "/data/(.*)",
