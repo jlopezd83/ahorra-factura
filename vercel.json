@@ -12,18 +12,18 @@
       "permanent": true
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/data/(.*)",
-      "dest": "/data/$1"
+      "source": "/data/:path*",
+      "destination": "/data/:path*"
     },
     {
-      "src": "/images/(.*)",
-      "dest": "/images/$1"
+      "source": "/images/:path*",
+      "destination": "/images/:path*"
     },
     {
-      "src": "/admin/(.*)",
-      "dest": "/admin/$1"
+      "source": "/admin/:path*",
+      "destination": "/admin/:path*"
     }
   ],
   "public": true
