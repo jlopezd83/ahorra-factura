@@ -1,29 +1,5 @@
 {
   "version": 2,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "ahorra-factura.com"
-        }
-      ],
-      "destination": "https://www.ahorrafactura.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "ahorra-factura.vercel.app"
-        }
-      ],
-      "destination": "https://www.ahorrafactura.com/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/data/:path*",
