@@ -12,8 +12,8 @@
     <meta name="msapplication-TileColor" content="#2563eb">
     
     <!-- SEO Metatags Mejorados -->
-    <title>Ahorra Factura | Reduce tus Facturas de Luz, Gas e Internet hasta un 50%</title>
-    <meta name="description" content="✅ Ahorra en tus facturas de luz, gas e internet. Optimización de facturas garantizada. Reduce tus gastos mensuales hasta un 50%. ¡Análisis gratuito! Expertos en ahorro energético.">
+    <title>Ahorra en Luz, Gas e Internet hasta 50% | Ahorra Factura</title>
+    <meta name="description" content="✅ Reduce tus facturas de luz hasta 50%. Análisis gratuito de tus facturas de gas, internet y móvil. Ahorro garantizado sin cambiar tus hábitos. +500 clientes satisfechos en España.">
     <meta name="keywords" content="ahorro facturas, reducir factura luz, bajar factura gas, optimizar facturas, ahorrar luz, ahorrar gas, factura luz alta, comparador tarifas luz, comparador tarifas gas, ahorro energético, facturas baratas, reducir gastos hogar">
     
     <!-- Etiquetas de localización -->
@@ -44,7 +44,7 @@
     <meta property="twitter:description" content="Reduce tus facturas mensuales hasta un 50%. Asesoramiento personalizado gratuito.">
     <meta property="twitter:image" content="https://www.ahorrafactura.com/images/share/share-image.jpg">
 
-    <link rel="canonical" href="https://www.ahorrafactura.com">
+    <link rel="canonical" href="https://www.ahorrafactura.com/" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/styles.css" rel="stylesheet">
     <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -67,23 +67,32 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       "name": "Ahorra Factura",
-      "image": "https://www.ahorrafactura.com/images/share/share-image.jpg",
-      "description": "Servicio de optimización de facturas de luz, gas, internet y móvil. Ahorra hasta un 50% en tus servicios.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "ES"
+      "description": "Servicio profesional de optimización de facturas de luz, gas e internet",
+      "areaServed": {
+        "@type": "Country",
+        "name": "España"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Optimización",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Optimización de Factura de Luz",
+              "description": "Reduce tu factura de luz hasta un 50%"
+            }
+          }
+        ]
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
         "reviewCount": "500"
-      },
-      "priceRange": "€",
-      "openingHours": "Mo-Fr 09:00-20:00",
-      "telephone": "",
-      "email": "info@ahorrafactura.com"
+      }
     }
     </script>
 
@@ -126,7 +135,15 @@
         <nav class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <img src="/images/share/share-square.jpg" alt="Ahorra Factura" class="h-10 w-10 mr-3" loading="lazy">
+                    <picture>
+                        <source srcset="/images/share/share-square.webp" type="image/webp">
+                        <source srcset="/images/share/share-square.jpg" type="image/jpeg">
+                        <img src="/images/share/share-square.jpg" 
+                            alt="Logo de Ahorra Factura - Expertos en optimización de facturas" 
+                            class="h-10 w-10 mr-3"
+                            width="40" 
+                            height="40">
+                    </picture>
                     <a href="#" class="text-2xl font-bold text-blue-600">Ahorra Factura</a>
                 </div>
                 <!-- Botón menú móvil -->
@@ -665,7 +682,7 @@
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 00-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
                             </svg>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
