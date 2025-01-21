@@ -22,7 +22,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                                 d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
                         </svg>
-                        Imprimir Propuesta
+                        Imprimir PDF
                     </button>
                     <div class="text-gray-600">Propuesta #2024-001</div>
                 </div>
@@ -220,11 +220,37 @@
         }
     </style>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <script>
         function imprimirPropuesta() {
-            const numeroFactura = document.querySelector('.text-gray-600').textContent.split('#')[1];
-            document.title = `AhorraFactura - Factura - ${numeroFactura}`;
-            window.print();
+            // Configuración del PDF
+            const opt = {
+                margin: 10,
+                filename: `AhorraFactura-Propuesta-${document.querySelector('.text-gray-600').textContent.split('#')[1]}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+
+            // Ocultar botón temporalmente
+            const boton = document.querySelector('button');
+            boton.style.display = 'none';
+
+            // Generar PDF
+            const element = document.body;
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restaurar botón
+                boton.style.display = 'flex';
+            });
         }
     </script>
 </body>
