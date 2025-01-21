@@ -3,7 +3,7 @@
   <url>
     <loc>https://www.ahorrafactura.com/</loc>
     <lastmod>2024-03-14</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -23,5 +23,11 @@
     <lastmod>2024-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.ahorrafactura.com/casos-exito</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
