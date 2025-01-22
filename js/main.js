@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validar nombre
         if (!nombre) {
-            mostrarError('Por favor, introduce tu nombre');
+            mostrarError('Por favor, introduces tu nombre');
             form.querySelector('[name="nombre"]').focus();
             return false;
         }
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validar teléfono
         if (!telefono) {
-            mostrarError('Por favor, introduce tu número de teléfono');
+            mostrarError('Por favor, introduces tu número de teléfono');
             form.querySelector('[name="telefono"]').focus();
             return false;
         }
@@ -151,9 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let whatsappUrl;
         if (isMobile) {
-            whatsappUrl = `https://api.whatsapp.com/send?phone=34661804306&text=${mensaje}`;
+            whatsappUrl = `https://api.whatsapp.com/send?phone=34644871368&text=${mensaje}`;
         } else {
-            whatsappUrl = `https://web.whatsapp.com/send?phone=34661804306&text=${mensaje}`;
+            whatsappUrl = `https://web.whatsapp.com/send?phone=34644871368&text=${mensaje}`;
         }
 
         mostrarLoading();
@@ -316,14 +316,14 @@ function iniciarWhatsApp() {
     
     if (isMobile) {
         // En móvil, intentar abrir la app de WhatsApp
-        window.location.href = `whatsapp://send?phone=34670449218&text=${mensajeCodificado}`;
+        window.location.href = `whatsapp://send?phone=34644871368&text=${mensajeCodificado}`;
         
         // Si falla (WhatsApp no instalado), abrir versión web después de un pequeño delay
         setTimeout(() => {
-            window.location.href = `https://wa.me/34670449218?text=${mensajeCodificado}`;
+            window.location.href = `https://wa.me/34644871368?text=${mensajeCodificado}`;
         }, 300);
     } else {
         // En desktop, abrir WhatsApp Web
-        window.open(`https://web.whatsapp.com/send?phone=34670449218&text=${mensajeCodificado}`, '_blank');
+        window.open(`https://web.whatsapp.com/send?phone=34644871368&text=${mensajeCodificado}`, '_blank');
     }
 } 
