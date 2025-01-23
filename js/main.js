@@ -315,15 +315,22 @@ function iniciarWhatsApp() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
     if (isMobile) {
-        // En móvil, intentar abrir la app de WhatsApp
-        window.location.href = `whatsapp://send?phone=34644871368&text=${mensajeCodificado}`;
-        
-        // Si falla (WhatsApp no instalado), abrir versión web después de un pequeño delay
-        setTimeout(() => {
-            window.location.href = `https://wa.me/34644871368?text=${mensajeCodificado}`;
-        }, 300);
+        // En móvil, abrir WhatsApp normal (no business)
+        window.location.href = `https://wa.me/34644871368?text=${mensajeCodificado}`;
     } else {
-        // En desktop, abrir WhatsApp Web
-        window.open(`https://web.whatsapp.com/send?phone=34644871368&text=${mensajeCodificado}`, '_blank');
+        // En desktop, intentar primero abrir la app
+        const appUrl = `whatsapp://send?phone=34644871368&text=${mensajeCodificado}`;
+        const webUrl = `https://web.whatsapp.com/send?phone=34644871368&text=${mensajeCodificado}`;
+        
+        // Intentar abrir la app
+        const appWindow = window.open(appUrl, '_blank');
+        
+        // Si la app no está instalada, appWindow será null o undefined
+        setTimeout(() => {
+            if (!appWindow || appWindow.closed || typeof appWindow.closed === 'undefined') {
+                // Abrir versión web
+                window.open(webUrl, '_blank');
+            }
+        }, 500);
     }
 } 
