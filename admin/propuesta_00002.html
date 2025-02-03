@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Ahorro | Ahorra Factura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../css/styles.css" rel="stylesheet">
+    <!-- Añadir html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- ... (mismo contenido que propuesta_00001.html) ... -->
+
+    <style>
+        @media print {
+            button[onclick="imprimirPropuesta"] {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <script>
+        // Verificar autenticación
+        if (!sessionStorage.getItem('auth')) {
+            window.location.href = 'login.html';
+        }
+
+        function imprimirPropuesta() {
+            // Configuración del PDF
+            const opt = {
+                margin: 10,
+                filename: `AhorraFactura-Propuesta-00002.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+
+            // Ocultar botón temporalmente
+            const boton = document.querySelector('button');
+            boton.style.display = 'none';
+
+            // Generar PDF
+            const element = document.body;
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restaurar botón
+                boton.style.display = 'flex';
+            });
+        }
+    </script>
+</body>
+</html> 
