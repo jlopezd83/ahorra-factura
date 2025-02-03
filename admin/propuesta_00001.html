@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- ... (mismo head que propuesta.html) ... -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Ahorro | Ahorra Factura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../css/styles.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
 <body class="bg-gray-50">
     <header class="bg-white shadow-sm w-full py-4">
         <div class="container mx-auto px-4">
@@ -81,6 +88,7 @@
                     </ul>
                 </div>
             </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">* Esta estimación está basada en los consumos de sus últimas facturas</p>
         </div>
 
         <!-- Resumen de Ahorro -->
@@ -98,14 +106,94 @@
             </div>
         </div>
 
-        <!-- ... (resto del contenido igual que propuesta.html) ... -->
+        <!-- Detalle del Servicio -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-6">Detalle del Servicio</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold mb-2">Descripción del servicio:</h3>
+                    <p class="text-gray-600">
+                        Análisis y optimización de facturas de suministros con el objetivo de identificar y aplicar medidas de ahorro para EL CLIENTE.
+                    </p>
+                </div>
 
-        <div class="border-t pt-4">
-            <p class="text-gray-600">
-                Fecha de validez del presupuesto: <span class="font-medium">21 de marzo de 2024</span>
-            </p>
+                <div>
+                    <h3 class="font-bold mb-2">Plazo de ejecución del servicio:</h3>
+                    <p class="text-gray-600">
+                        Una vez recibido el pago inicial (50% del importe total), LA EMPRESA realizará el servicio en un plazo máximo de una semana.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-4">Condiciones Económicas</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-2">
+                        <p class="font-semibold">Coste total del servicio: <span class="text-blue-600">149,87 € (IVA incluido)</span></p>
+                        <p>Pago inicial (50%): <span class="font-medium">74,94 €</span></p>
+                        <p>Pago final (50%): <span class="font-medium">74,93 €</span></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-2">Forma de pago:</h3>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                        <li>Los pagos deberán realizarse mediante tarjeta bancaria a través del enlace que será proporcionado por LA EMPRESA.</li>
+                        <li>El 50% inicial deberá abonarse antes de la finalización de la fecha de validez de este presupuesto.</li>
+                        <li>El 50% restante deberá abonarse en un plazo máximo de tres (3) días naturales tras la finalización del servicio.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-2">Confidencialidad y Protección de Datos</h3>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                        <li>LA EMPRESA garantiza que toda la información proporcionada por EL CLIENTE será tratada de forma confidencial y utilizada únicamente para la prestación del servicio.</li>
+                        <li>Los datos proporcionados se tratarán conforme a la normativa vigente en materia de protección de datos personales.</li>
+                        <li>En ningún caso los datos del cliente serán cedidos, vendidos o utilizados para fines diferentes a los aquí especificados.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold mb-2">Aceptación de la Propuesta</h3>
+                    <p class="text-gray-600">
+                        El cliente, mediante la firma de este documento o la respuesta escrita aceptando esta propuesta, manifiesta su conformidad con las condiciones del servicio y del presupuesto.
+                    </p>
+                </div>
+
+                <div class="border-t pt-4">
+                    <p class="text-gray-600">
+                        Fecha de validez del presupuesto: <span class="font-medium">21 de marzo de 2024</span>
+                    </p>
+                </div>
+            </div>
         </div>
 
+        <!-- Pasos a Seguir -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-6">Próximos Pasos</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Aceptar Propuesta</h3>
+                    <p class="text-gray-600">Confirma que quieres proceder con el cambio</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">2</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Documentación</h3>
+                    <p class="text-gray-600">Te ayudamos con todo el papeleo</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-blue-600">3</span>
+                    </div>
+                    <h3 class="font-bold mb-2">¡Empieza a Ahorrar!</h3>
+                    <p class="text-gray-600">Disfruta de tu nueva tarifa optimizada</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-gray-800 text-white py-8 mt-16">
@@ -115,6 +203,49 @@
         </div>
     </footer>
 
-    <!-- ... (mismo script que propuesta.html) ... -->
+    <style>
+        @media print {
+            button[onclick="imprimirPropuesta"] {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <script>
+        // Verificar autenticación
+        if (!sessionStorage.getItem('auth')) {
+            window.location.href = 'login.html';
+        }
+
+        function imprimirPropuesta() {
+            // Configuración del PDF
+            const opt = {
+                margin: 10,
+                filename: `AhorraFactura-Propuesta-00001.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+
+            // Ocultar botón temporalmente
+            const boton = document.querySelector('button');
+            boton.style.display = 'none';
+
+            // Generar PDF
+            const element = document.body;
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restaurar botón
+                boton.style.display = 'flex';
+            });
+        }
+    </script>
 </body>
 </html> 
