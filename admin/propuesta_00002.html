@@ -40,7 +40,7 @@
                     <h2 class="text-xl font-semibold mb-4">Cliente</h2>
                     <p class="text-gray-600">
                         Nombre: <span class="font-medium">FBS NUEVE S.L.</span><br>
-                        Fecha: <span class="font-medium">1 de febrero de 2025</span><br>
+                        Fecha: <span class="font-medium">4 de febrero de 2025</span><br>
                         Servicio: <span class="font-medium">Electricidad</span>
                     </p>
                 </div>
@@ -100,9 +100,11 @@
                     <div class="text-blue-100">Ahorro Anual</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-bold mb-2">149,87 €</div>
+                    <div class="text-3xl font-bold mb-2">299,75 €</div>
                     <div class="text-blue-100">Coste del Servicio</div>
-                    <div class="text-sm mt-2">(Incluye 50% descuento comercial)</div>
+                    <div class="text-sm mt-2">(10% del ahorro anual)</div>
+                    <div class="text-sm mt-2 text-green-200">Descuento 50%: -149,88 €</div>
+                    <div class="text-xl font-bold mt-2">Precio Final: 149,87 €</div>
                 </div>
             </div>
         </div>
@@ -162,7 +164,7 @@
 
                 <div class="border-t pt-4">
                     <p class="text-gray-600">
-                        Fecha de validez del presupuesto: <span class="font-medium">8 de febrero de 2025</span>
+                        Fecha de validez del presupuesto: <span class="font-medium">11 de febrero de 2025</span>
                     </p>
                 </div>
             </div>
@@ -200,7 +202,7 @@
     <footer class="bg-gray-800 text-white py-8 mt-16">
         <div class="container mx-auto px-4 text-center">
             <p>© Ahorra Factura. Todos los derechos reservados.</p>
-            <p class="text-gray-400 mt-2">Esta propuesta tiene una validez de 7 días</p>
+            <p class="text-gray-400 mt-2">Esta propuesta tiene una validez de una semana</p>
         </div>
     </footer>
 
@@ -209,6 +211,20 @@
             button[onclick="imprimirPropuesta"] {
                 display: none !important;
             }
+        }
+        /* Reducir tamaño de texto general */
+        body {
+            font-size: 0.8em;
+        }
+        /* Reducir espaciado entre secciones */
+        .mb-8 {
+            margin-bottom: 1rem !important;
+        }
+        .mt-8 {
+            margin-top: 1rem !important;
+        }
+        .space-y-6 > * + * {
+            margin-top: 0.75rem !important;
         }
     </style>
 
