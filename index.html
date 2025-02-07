@@ -210,7 +210,7 @@
                 <div>|</div>
                 <div>500+ clientes satisfechos</div>
                 <div>|</div>
-                <div>Ahorro medio del 30%</div>
+                <div>Ahorro medio del 35%</div>
             </div>
         </div>
     </div>
@@ -381,7 +381,7 @@
                     <p>Clientes Satisfechos</p>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold mb-2">30%</div>
+                    <div class="text-4xl font-bold mb-2">35%</div>
                     <p>Ahorro Medio</p>
                 </div>
                 <div>
@@ -401,7 +401,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Optimización por Servicios</h2>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <!-- Electricidad -->
                 <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl shadow-lg">
                     <div class="flex items-center mb-4">
@@ -481,7 +481,7 @@
                             <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                             </svg>
-                            Ahorro medio: 25-40%
+                            Ahorro medio: 40-50%
                         </li>
                         <li class="flex items-center">
                             <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -494,38 +494,6 @@
                                 <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                             </svg>
                             Ajuste a necesidades reales
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Móvil -->
-                <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-green-100 p-3 rounded-full mr-4">
-                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Móvil</h3>
-                    </div>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Ahorro medio: 30-45%
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Análisis de consumo real
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                            </svg>
-                            Optimización de datos y minutos
                         </li>
                     </ul>
                 </div>
@@ -743,10 +711,15 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/chatbot.js"></script>
     <script>
-        window.chatbot = new Chatbot();
-        window.chatbot.init();
+        function iniciarChat(servicio) {
+            const servicios = {
+                'luz': 'Luz',
+                'gas': 'Gas',
+                'internet': 'Internet / Móvil / TV',
+            };
+            // ... resto del código
+        }
     </script>
 
     <!-- Schema.org markup -->
