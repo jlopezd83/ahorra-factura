@@ -740,12 +740,19 @@
 
             // Intentar abrir WhatsApp
             const abrirWhatsApp = () => {
+                // Detectar si es macOS
+                const esMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform);
                 // Detectar si es móvil
                 const esMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 
                 // Crear un elemento temporal para abrir el enlace
                 const link = document.createElement('a');
-                link.href = esMobile ? whatsappMobile : whatsappWeb;
+                if (esMac) {
+                    // Protocolo específico para WhatsApp Desktop en Mac
+                    link.href = `whatsapp://send?phone=34644871368&text=${encodeURIComponent(mensaje)}`;
+                } else {
+                    link.href = esMobile ? whatsappMobile : whatsappWeb;
+                }
                 link.target = '_blank';
                 document.body.appendChild(link);
                 link.click();
