@@ -711,18 +711,28 @@
     <script src="js/main.js"></script>
     <script>
         function iniciarWhatsApp() {
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value;
+            const servicios = Array.from(document.querySelectorAll('input[name="servicios[]"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            // Validaciones
+            if (!nombre) {
+                alert('Por favor, introduce tu nombre');
+                return;
+            }
+
+            if (servicios.length === 0) {
+                alert('Por favor, selecciona al menos un servicio');
+                return;
+            }
+
             // Mostrar overlay de carga
             document.getElementById('loadingOverlay').classList.remove('hidden');
 
-            // Obtener valores del formulario
-            const nombre = document.getElementById('nombre').value;
-            const telefono = document.getElementById('telefono').value;
-            const servicios = Array.from(document.querySelectorAll('input[name="servicios[]"]:checked'))
-                .map(checkbox => checkbox.value)
-                .join(', ');
-
             // Crear mensaje
-            const mensaje = `Hola, soy ${nombre}. Me gustaría optimizar mis facturas de ${servicios}`;
+            const mensaje = `Hola, soy ${nombre}. Me gustaría optimizar mis facturas de ${servicios.join(', ')}`;
             
             // URLs para ambas versiones de WhatsApp
             const whatsappMobile = `whatsapp://send?phone=34644871368&text=${encodeURIComponent(mensaje)}`;
