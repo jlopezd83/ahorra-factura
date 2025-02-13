@@ -710,13 +710,47 @@
 
     <script src="js/main.js"></script>
     <script>
-        function iniciarChat(servicio) {
-            const servicios = {
-                'luz': 'Luz',
-                'gas': 'Gas',
-                'internet': 'Internet / Móvil / TV',
+        function iniciarWhatsApp() {
+            // Mostrar overlay de carga
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicios = Array.from(document.querySelectorAll('input[name="servicios[]"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+
+            // Crear mensaje
+            const mensaje = `Hola, soy ${nombre}. Me gustaría optimizar mis facturas de ${servicios}`;
+            
+            // URLs para ambas versiones de WhatsApp
+            const whatsappMobile = `whatsapp://send?phone=34657858545&text=${encodeURIComponent(mensaje)}`;
+            const whatsappWeb = `https://web.whatsapp.com/send?phone=34657858545&text=${encodeURIComponent(mensaje)}`;
+
+            // Intentar abrir WhatsApp
+            const abrirWhatsApp = () => {
+                // Detectar si es móvil
+                const esMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                // Crear un elemento temporal para abrir el enlace
+                const link = document.createElement('a');
+                link.href = esMobile ? whatsappMobile : whatsappWeb;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Ocultar overlay después de un breve delay
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').classList.add('hidden');
+                }, 1000);
             };
-            // ... resto del código
+
+            // Intentar abrir WhatsApp con fallback
+            setTimeout(() => {
+                abrirWhatsApp();
+            }, 500);
         }
     </script>
 
