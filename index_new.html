@@ -139,9 +139,10 @@
         }
         .from-custom-blue {
             --tw-gradient-from: #05104e;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(5 16 78 / 0));
         }
         .to-custom-blue {
-            --tw-gradient-to: #030a2f;
+            --tw-gradient-to: #05104e;
         }
         .hover\:text-custom-blue:hover {
             color: #05104e;
@@ -186,7 +187,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-10 bg-gradient-to-r from-custom-blue to-custom-blue">
+    <section class="pt-32 pb-10 bg-custom-blue">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center text-white">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">
