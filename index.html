@@ -702,6 +702,13 @@
             // Mostrar overlay de carga
             document.getElementById('loadingOverlay').classList.remove('hidden');
 
+            // Disparar evento de Twitter con información del origen
+            twq('event', 'tw-p83j9-p83j9', {
+                'content_type': 'WhatsApp Click',
+                'content_name': 'Formulario Principal',
+                'value': 'lead_start'
+            });
+
             // Crear mensaje
             const mensaje = `Hola, me llamo ${nombre}, y estoy interesado en optimizar mis facturas de suministros`;
             
